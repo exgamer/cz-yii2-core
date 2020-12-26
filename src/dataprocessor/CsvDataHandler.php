@@ -9,7 +9,7 @@ use yii\base\Exception;
  * @package citizenzet\yii2logic\dataprocessor
  * @author citizenzet <exgamer@live.ru>
  */
-abstract class ExelDataHandler extends DataHandler
+abstract class CsvDataHandler extends DataHandler
 {
     /**
      * @return string
@@ -17,7 +17,15 @@ abstract class ExelDataHandler extends DataHandler
      */
     public function getQuery()
     {
-        throw new Exception("set exel file path");
+        throw new Exception("set csv file path");
+    }
+
+    /**
+     * @return string
+     */
+    public function getDelimeter()
+    {
+        return ";";
     }
 
     /**
