@@ -10,8 +10,15 @@ use yii\helpers\Console;
 
 /**
  * Class CsvDataProcessor
- * @package citizenzet\yii2logic\dataprocessor
- * @author citizenzet <exgamer@live.ru>
+ *
+ *  $config = [
+ *     'dataHandlerClass' => CsvDataHandler::class,
+ * ];
+ *
+ *
+ * CsvDataProcessor::exec($config);
+ *
+ * @author Olzhas Kulzhambekov <exgamer@live.ru>
  */
 class CsvDataProcessor extends DataProcessor
 {
