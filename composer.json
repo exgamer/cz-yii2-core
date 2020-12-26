@@ -1,0 +1,31 @@
+{
+    "name": "citizenzet/yii2-core",
+    "license": "MIT",
+    "type": "yii2-extension",
+    "description": "package under development",
+    "require": {
+        "php": ">=5.6.0",
+        "yiisoft/yii2": "2.0.29",
+        "firebase/php-jwt": "^5.0",
+        "guzzlehttp/guzzle" : "~6.0",
+        "giggsey/libphonenumber-for-php": "*"
+    },
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Olzhas Kulzhambekov",
+            "email": "exgamer@live.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "citizenzet\\yii2logic\\": "src"
+        }
+    },
+    "extra": {
+        "bootstrap": "citizenzet\\yii2logic\\Bootstrap",
+        "branch-alias": {
+            "dev-master": "1.0.0-dev"
+        }
+    }
+}
