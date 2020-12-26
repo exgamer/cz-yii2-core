@@ -33,25 +33,41 @@ class CsvDataProcessor extends DataProcessor
             return true;
         }
 
+        $count = $this->getCsvRowsCount();
+        $row = 1;
         if (($handle = fopen($this->dataHandler->getQuery(), "r")) !== FALSE) {
-            $count = 10000000;
-            $row = 1;
-            while (($model = fgetcsv($handle, 1000, $this->dataHandler->getDelimeter())) !== FALSE) {
-                $this->outputSuccess( "START PROCESS ROW : " . $row . " of " . $count );
-                Console::startProgress(0, $count);
+            $this->outputSuccess( "START PROCESS" );
+            Console::startProgress(0, $count);
+            while (($model = fgetcsv($handle, 0, $this->dataHandler->getDelimeter())) !== FALSE) {
                 $this->prepareModel($model);
                 $this->processModel($model);
                 $this->finishProcessModel($model);
-                Console::updateProgress($k + 1 , $count);
-                $memory = memory_get_usage()/1024;
-                $this->outputSuccess( "END PROCESS ROW : "  . $row . " of " . $count . "; MEMORY USED: {$memory}");
+                Console::updateProgress($row , $count);
                 $row++;
             }
             fclose($handle);
+            $memory = memory_get_usage()/1024;
+            $this->outputSuccess( "END PROCESS ; MEMORY USED: {$memory}");
         }
 
         $this->afterExecute();
 
         return true;
+    }
+
+    public function getCsvRowsCount()
+    {
+        $this->outputSuccess( "Counting rows" );
+        $rowCount = 1;
+        $handle = fopen($this->dataHandler->getQuery(), "r");
+        while(!feof($handle)){
+            $line = fgets($handle);
+            $rowCount++;
+        }
+
+        fclose($handle);
+        $this->outputSuccess( "File has " . $rowCount . " rows" );
+
+        return $rowCount;
     }
 }
