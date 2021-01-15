@@ -1,16 +1,12 @@
 <?php
 namespace citizenzet\yii2logic\forms;
 
-
+use yii\base\Model;
 
 /**
- * @TODO Тестим
- *
- * Базовая форма сущности связанной с  моделью AR
- *
  * Class Form
  * @package citizenzet\yii2logic\forms
- * @author Olzhas Kulzhambekov <exgamer@live.ru>
+ * @author citizenzet <exgamer@live.ru>
  */
 abstract class Form extends Model
 {
