@@ -51,4 +51,14 @@ class ApiDataProcessor extends DataProcessor
 
         return [];
     }
+
+    public function getResponseStatus()
+    {
+        return $this->dataHandler->responseStatus;
+    }
+
+    public function getResponseBodyContent()
+    {
+        return $this->dataHandler->responseBodyContent;
+    }
 }
