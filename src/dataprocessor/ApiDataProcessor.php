@@ -42,9 +42,10 @@ class ApiDataProcessor extends DataProcessor
     {
         $client = new Client(['timeout' => 0]);
         $res = $client->request($this->dataHandler->method, $this->dataHandler->getQuery(), $this->dataHandler->queryConfig);
+        $this->dataHandler->responseStatus = $res->getStatusCode();
         if ($res->getStatusCode() === 200){
             $data = json_decode($res->getBody()->getContents(), true);
-
+            $this->dataHandler->responseBodyContent = $data;
             return $data;
         }
 
